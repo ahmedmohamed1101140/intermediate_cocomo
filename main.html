@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cocomo 2</title>
+  </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css" >
+  <body>
+    <nav>
+   <div class="nav-wrapper">
+     <a href="#" class="brand-logo center">Cocomo Model</a>
+   </div>
+ </nav>
+
+<br><br>
+    <div class="container">
+
+      <ul class="collapsible popout"  data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>Application Composition Model</div>
+          <div class="collapsible-body">
+
+            <div class="row">
+              <div class="input-field col m4">
+                  <input id="sim_screen" class="validate" type="number" value="0">
+                  <label for="sim_screen">Simple Screens</label>
+              </div>
+              <div class="input-field col m4">
+                  <input id="mid_screen" class="validate" type="number" value="0">
+                  <label for="mid_screen">Mediam Screens</label>
+              </div>
+              <div class="input-field col m4">
+                  <input id="diff_screen" class="validate" type="number" value="0">
+                  <label for="diff_screen">Difficult Screens</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col m4">
+                  <input id="sim_report" class="validate" type="number" value="0">
+                  <label for="sim_report">Simple Reports</label>
+              </div>
+              <div class="input-field col m4">
+                  <input id="mid_report" class="validate" type="number" value="0">
+                  <label for="mid_report">Mediam Reports</label>
+              </div>
+              <div class="input-field col m4">
+                  <input id="diff_report" class="validate" type="number" value="0">
+                  <label for="diff_report">Difficult Reports</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col m6">
+                  <input id="components" class="validate" type="number" value="0">
+                  <label for="components">3GL Components</label>
+              </div>
+              <div class="input-field col m6">
+                  <input id="reuse_components" class="validate" type="number" value="0">
+                  <label for="reuse_components">Reused Components %</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col m9">
+                Developer's Experince / Case mature and capability :
+                <select id="prod" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col push-m4">
+                <a class="waves-effect waves-light btn modal-trigger left" href="#modal1" onclick="return calculate_AP()">
+                  <i class="material-icons right">add_circle</i>
+                    Calculate
+                </a>
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                  <div class="modal-content">
+                    <h4>Result</h4>
+                    <div id="result">
+
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </li>
+
+        <li>
+          <div class="collapsible-header"><i class="material-icons">place</i>Early Design Model</div>
+          <div class="collapsible-body">
+
+            <div class="row">
+              <div class="input-field col m9">
+                  <input id="size" class="validate" type="number" >
+                  <label for="size">Size / Line Of code (KLOC) </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col m2" style="margin-left: 30px;">
+                RCPX
+                <select id="RCPX" >
+                  <option value="0" selected="selected" >Extra Low</option>
+                  <option value="1"> Very Low </option>
+                  <option value="2"> Low </option>
+                  <option value="3"> Nominal </option>
+                  <option value="4"> High </option>
+                  <option value="5"> Very High </option>
+                  <option value="6"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m2" style="margin-left: 30px;">
+                RUSE
+                <select id="RUSE" >
+                  <option value="0" selected="selected" >Extra Low</option>
+                  <option value="1"> Very Low </option>
+                  <option value="2"> Low </option>
+                  <option value="3"> Nominal </option>
+                  <option value="4"> High </option>
+                  <option value="5"> Very High </option>
+                  <option value="6"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m2" style="margin-left: 30px;">
+                PDIF
+                <select id="PDIF" >
+                  <option value="0" selected="selected" >Extra Low</option>
+                  <option value="1"> Very Low </option>
+                  <option value="2"> Low </option>
+                  <option value="3"> Nominal </option>
+                  <option value="4"> High </option>
+                  <option value="5"> Very High </option>
+                  <option value="6"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m2" style="margin-left: 30px;">
+                PREX
+                <select id="PREX" >
+                  <option value="0" selected="selected" >Extra Low</option>
+                  <option value="1"> Very Low </option>
+                  <option value="2"> Low </option>
+                  <option value="3"> Nominal </option>
+                  <option value="4"> High </option>
+                  <option value="5"> Very High </option>
+                  <option value="6"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m2" style="margin-left: 30px;">
+                PERS
+                <select id="PERS" >
+                  <option value="0" selected="selected" >Extra Low</option>
+                  <option value="1"> Very Low </option>
+                  <option value="2"> Low </option>
+                  <option value="3"> Nominal </option>
+                  <option value="4"> High </option>
+                  <option value="5"> Very High </option>
+                  <option value="6"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m2" style="margin-left: 30px;">
+                SCED
+                <select id="SCED" >
+                  <option value="0" selected="selected" >Extra Low</option>
+                  <option value="1"> Very Low </option>
+                  <option value="2"> Low </option>
+                  <option value="3"> Nominal </option>
+                  <option value="4"> High </option>
+                  <option value="5"> Very High </option>
+                  <option value="6"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m2" style="margin-left: 30px;">
+                FCIL
+                <select id="FCIL" >
+                  <option value="0" selected="selected" >Extra Low</option>
+                  <option value="1"> Very Low </option>
+                  <option value="2"> Low </option>
+                  <option value="3"> Nominal </option>
+                  <option value="4"> High </option>
+                  <option value="5"> Very High </option>
+                  <option value="6"> Extra High </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col push-m4">
+                <a class="waves-effect waves-light btn modal-trigger left" href="#modal4" onclick="return calculate_ED()">
+                  <i class="material-icons right">add_circle</i>
+                    Calculate
+                </a>
+                <!-- Modal Structure -->
+                <div id="modal4" class="modal">
+                  <div class="modal-content">
+                    <h4>Result</h4>
+                    <div id="result_ED">
+
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </li>
+
+        <li>
+          <div class="collapsible-header"><i class="material-icons">whatshot</i>The Ruese Model</div>
+          <div class="collapsible-body">
+
+
+              <ul id="tabs-swipe-demo" class="tabs tabs-fixed-width">
+                <li class="tab col s3"><a href="#test-swipe-1">Black Box</a></li>
+                <li class="tab col s3"><a href="#test-swipe-2">White Box</a></li>
+
+              </ul>
+              <div id="test-swipe-1" class="col s12 ">
+                <br><br><br>
+                <div class="row">
+                  <div class="input-field col m12">
+                      <input id="ASLOC" class="validate" type="number" >
+                      <label for="ASLOC">number of lines of generated code (ASLOC) </label>
+                  </div>
+                  <div class="input-field col m12">
+                      <input id="AT" class="validate" type="number" >
+                      <label for="AT">the percentage of code automatically generated (AT) </label>
+                  </div>
+                  <div class="input-field col m12">
+                      <input id="ATPROD" class="validate" type="number" >
+                      <label for="ATPROD">the productivity of engineers in integrating this code (ATPROD) </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col push-m4">
+                    <a class="waves-effect waves-light btn modal-trigger left" href="#modal2" onclick="return calculate_BX()">
+                      <i class="material-icons right">add_circle</i>
+                        Calculate
+                    </a>
+                    <!-- Modal Structure -->
+                    <div id="modal2" class="modal">
+                      <div class="modal-content">
+                        <h4>Result</h4>
+                        <div id="result_BX">
+
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div id="test-swipe-2" class="col s12 ">
+                  <br><br><br>
+                  <div class="row">
+                    <div class="input-field col m12">
+                        <input id="ASLOC1" class="validate" type="number" >
+                        <label for="ASLOC1">number of lines of generated code (ASLOC) </label>
+                    </div>
+                    <div class="input-field col m12">
+                        <input id="AT1" class="validate" type="number" >
+                        <label for="AT1">the percentage of code automatically generated (AT) </label>
+                    </div>
+                    <div class="input-field col m12">
+                        <input id="ATPROD1" class="validate" type="number" >
+                        <label for="ATPROD1">the productivity of engineers in integrating this code (ATPROD) </label>
+                    </div>
+                    <div class="input-field col m12">
+                        <input id="AAM1" class="validate" type="number" >
+                        <label for="AAM1">Cost of Change the reuse Code (AAM) </label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col push-m4">
+                      <a class="waves-effect waves-light btn modal-trigger left" href="#modal3" onclick="return calculate_WX()">
+                        <i class="material-icons right">add_circle</i>
+                          Calculate
+                      </a>
+                      <!-- Modal Structure -->
+                      <div id="modal3" class="modal">
+                        <div class="modal-content">
+                          <h4>Result</h4>
+                          <div id="result_WX">
+
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+
+          </div>
+        </li>
+
+        <li>
+          <div class="collapsible-header"><i class="material-icons">whatshot</i>Post Architecture Model</div>
+          <div class="collapsible-body">
+            <div class="row">
+              <div class="input-field col m9">
+                  <input id="size2" class="validate" type="number" >
+                  <label for="size2">Size / Line Of code (KLOC) </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col m3" style="margin-left: 30px;">
+                RELY
+                <select id="RELY1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                DATA
+                <select id="DATA1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                CPLX
+                <select id="CPLX1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                RUSE
+                <select id="RUSE1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                DOCU
+                <select id="DOCU1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                TIME
+                <select id="TIME1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                STOR
+                <select id="STOR1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                PVOL
+                <select id="PVOL1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                ACAP
+                <select id="ACAP1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                PCAP
+                <select id="PCAP1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                PCON
+                <select id="PCON1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                AEXP
+                <select id="AEXP1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                PEXP
+                <select id="PEXP1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                LTEX
+                <select id="LTEX1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                TOOL
+                <select id="TOOL1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                SITE
+                <select id="SITE1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                SCED
+                <select id="SCED1" >
+                  <option value="0" selected="selected" >Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col push-m4">
+                <a class="waves-effect waves-light btn modal-trigger left" href="#modal6" onclick="return calculate_PA()">
+                  <i class="material-icons right">add_circle</i>
+                    Calculate
+                </a>
+                <!-- Modal Structure -->
+                <div id="modal6" class="modal">
+                  <div class="modal-content">
+                    <h4>Result</h4>
+                    <div id="result_PA">
+
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </li>
+    </ul>
+
+  </div>
+
+  <div class="fixed-action-btn horizontal">
+     <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger tooltipped" href="#modal5" data-position="left" data-delay="50" data-tooltip="B Default Value is 1.17">
+        <i class="large material-icons">mode_edit</i>
+     </a>
+   </div>
+   <!-- Modal Structure -->
+   <div id="modal5" class="modal bottom-sheet">
+     <div class="modal-content">
+       <h4>B Default VAlue is 1.17</h4>
+       <div class="row">
+         <br><br>
+         <div class="col m2" style="margin-left: 30px;">
+           Precedentnees
+           <select id="prec" >
+             <option value="0" selected="selected" >Very Low</option>
+             <option value="1"> Low </option>
+             <option value="2"> Nominal </option>
+             <option value="3"> High </option>
+             <option value="4"> Very High </option>
+             <option value="5"> Extra High </option>
+           </select>
+         </div>
+         <div class="col m2" style="margin-left: 30px;">
+           Development Flexability
+           <select id="flex" >
+             <option value="0" selected="selected" >Very Low</option>
+             <option value="1"> Low </option>
+             <option value="2"> Nominal </option>
+             <option value="3"> High </option>
+             <option value="4"> Very High </option>
+             <option value="5"> Extra High </option>
+           </select>
+         </div>
+         <div class="col m2" style="margin-left: 30px;">
+           Architecture/ Risk Resolution
+           <select id="risk" >
+             <option value="0" selected="selected" >Very Low</option>
+             <option value="1"> Low </option>
+             <option value="2"> Nominal </option>
+             <option value="3"> High </option>
+             <option value="4"> Very High </option>
+             <option value="5"> Extra High </option>
+           </select>
+         </div>
+         <div class="col m2" style="margin-left: 30px;">
+           Team Cohesion
+           <select id="team" >
+             <option value="0" selected="selected" >Very Low</option>
+             <option value="1"> Low </option>
+             <option value="2"> Nominal </option>
+             <option value="3"> High </option>
+             <option value="4"> Very High </option>
+             <option value="5"> Extra High </option>
+           </select>
+         </div>
+         <div class="col m2" style="margin-left: 30px;">
+           Process Maturity
+           <select id="matu" >
+             <option value="0" selected="selected" >Very Low</option>
+             <option value="1"> Low </option>
+             <option value="2"> Nominal </option>
+             <option value="3"> High </option>
+             <option value="4"> Very High </option>
+             <option value="5"> Extra High </option>
+           </select>
+         </div>
+        <br><br><br><br><br><br><br><br><br><br><br>
+       </div>
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="return calculate_B()">Submit</a>
+     </div>
+   </div>
+
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="main.js" charset="utf-8"></script>
+
+
+  </body>
+</html>
