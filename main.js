@@ -32,17 +32,98 @@ var matu = [7.80 , 6.24 , 4.68 , 3.12 , 1.56 , 0]
 
 var B = 1.17;
 var A = 2.94;
-function calculate_AP(){
-      var AP = Math.ceil(
-                  (1  * document.getElementById("sim_screen").value)
-                + (2  * document.getElementById("mid_screen").value)
-                + (3  * document.getElementById("diff_screen").value)
-                + (2  * document.getElementById("sim_report").value)
-                + (5  * document.getElementById("mid_report").value)
-                + (8  * document.getElementById("diff_report").value)
-                + (10 * document.getElementById("components").value)
-              );
+var AP = 0;
 
+function add_component(){
+  AP += 10 * parseInt(document.getElementById("components").value);
+  console.log(AP);
+  document.getElementById("ap").innerHTML = "AP = "+AP;
+}
+
+function add_screen(){
+  var screen_num = parseInt(document.getElementById("screen_num").value);
+  var screen_server = parseInt(document.getElementById("screen_server").value);
+  var screen_client = parseInt(document.getElementById("screen_client").value);
+
+    if(screen_num < 3){
+      if(screen_server > 3 && screen_client > 5){
+        AP += 2
+      }
+      else {
+          AP += 1
+      }
+    }
+    else if(screen_num < 8){
+      if(screen_server < 2 && screen_client < 2){
+        AP += 1
+      }
+      else if(screen_server < 4 && screen_client < 6) {
+          AP += 2
+      }
+      else {
+        AP += 3
+      }
+    }
+    else{
+      if(screen_server < 2 && screen_client < 2){
+        AP += 2
+      }
+      else {
+        AP += 3
+      }
+    }
+    document.getElementById("screen_num").value = 0
+    document.getElementById("screen_server").value = 0
+    document.getElementById("screen_client").value = 0
+    console.log(AP);
+    document.getElementById("ap").innerHTML = "AP = "+AP;
+
+}
+
+
+function add_report(){
+  var report_num = parseInt(document.getElementById("report_num").value);
+  var report_server = parseInt(document.getElementById("report_server").value);
+  var report_client = parseInt(document.getElementById("report_client").value);
+
+    if(report_num < 2){
+      if(report_server > 3 && report_client > 5){
+        AP += 5
+      }
+      else {
+          AP += 2
+      }
+    }
+    else if(report_num < 4){
+      if(report_server < 2 && report_client < 2){
+        AP += 2
+      }
+      else if(report_server < 4 && report_client < 6) {
+          AP += 5
+      }
+      else {
+        AP += 8
+      }
+    }
+    else{
+      if(report_server < 2 && report_client < 2){
+        AP += 5
+      }
+      else {
+        AP += 8
+      }
+    }
+    document.getElementById("report_num").value = 0
+    document.getElementById("report_server").value = 0
+    document.getElementById("report_client").value = 0
+    console.log(AP);
+    document.getElementById("ap").innerHTML = "AP = "+AP;
+
+}
+
+
+
+function calculate_AP(){
     var NAP = Math.ceil( AP * ((100-document.getElementById("reuse_components").value)/100));
     var effort = Math.ceil( NAP/prod_rate[document.getElementById("prod").value]);
     var time = Math.ceil( 3 * Math.pow(effort , (0.33 + 0.2 * (B - 1.01))));
@@ -205,11 +286,9 @@ function calculate_BX(){
 }
 
 function calculate_WX(){
-  var ESLOC = (document.getElementById("ASLOC1").value * ((1-(document.getElementById("AT1").value))/100) * document.getElementById("AAM1").value);
-  var effort = Math.ceil((ESLOC * (document.getElementById("AT1").value/100))/document.getElementById("ATPROD1").value);
+  var effort = (document.getElementById("ASLOC1").value * (1- ((document.getElementById("AT1").value)/100)) * document.getElementById("AAM1").value);
   var time   = Math.ceil( 3 * Math.pow(effort , (0.33 + 0.2 * (B - 1.01))));
   var people = Math.ceil(effort / time );
-  console.log(ESLOC);
   console.log(effort);
   console.log(time);
   console.log(people);
@@ -225,10 +304,6 @@ function calculate_WX(){
                    </tr>
                  </thead>
                  <tbody>
-                   <tr>
-                     <td>ESLOC</td>
-                     <td>`+ESLOC+` </td>
-                   </tr>
                    <tr>
                      <td>Person Monthes (Effort)</td>
                      <td>`+effort+` PM</td>

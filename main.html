@@ -21,42 +21,59 @@
         <li>
           <div class="collapsible-header"><i class="material-icons">filter_drama</i>Application Composition Model</div>
           <div class="collapsible-body">
-
             <div class="row">
-              <div class="input-field col m4">
-                  <input id="sim_screen" class="validate" type="number" value="0">
-                  <label for="sim_screen">Simple Screens</label>
-              </div>
-              <div class="input-field col m4">
-                  <input id="mid_screen" class="validate" type="number" value="0">
-                  <label for="mid_screen">Mediam Screens</label>
-              </div>
-              <div class="input-field col m4">
-                  <input id="diff_screen" class="validate" type="number" value="0">
-                  <label for="diff_screen">Difficult Screens</label>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-field col m4">
-                  <input id="sim_report" class="validate" type="number" value="0">
-                  <label for="sim_report">Simple Reports</label>
-              </div>
-              <div class="input-field col m4">
-                  <input id="mid_report" class="validate" type="number" value="0">
-                  <label for="mid_report">Mediam Reports</label>
-              </div>
-              <div class="input-field col m4">
-                  <input id="diff_report" class="validate" type="number" value="0">
-                  <label for="diff_report">Difficult Reports</label>
-              </div>
-            </div>
-
-            <div class="row">
+              <h5>3GL component</h5>
               <div class="input-field col m6">
                   <input id="components" class="validate" type="number" value="0">
-                  <label for="components">3GL Components</label>
+                  <label for="sim_screen">Number of 3GL Component</label>
               </div>
+              <div class="input-field col m3">
+                <a class="waves-effect waves-light btn" onclick="return add_component()">Add 3GL</a>
+              </div>
+              <div class="input-field col m3">
+                    <h5 id="ap">AP = 0</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <h5>Screens</h2>
+              <div class="input-field col m3">
+                  <input id="screen_num" class="validate" type="number" value="0">
+                  <label for="sim_screen">Views NUM</label>
+              </div>
+              <div class="input-field col m3">
+                  <input id="screen_server" class="validate" type="number" value="0">
+                  <label for="mid_screen">Server Data Table</label>
+              </div>
+              <div class="input-field col m3">
+                  <input id="screen_client" class="validate" type="number" value="0">
+                  <label for="diff_screen">Client Data Table</label>
+              </div>
+              <div class="input-field col m3">
+                <a class="waves-effect waves-light btn" onclick="return add_screen()">Add Screen</a>
+              </div>
+            </div>
+
+            <div class="row">
+              <h5>Reports</h2>
+              <div class="input-field col m3">
+                  <input id="report_num" class="validate" type="number" value="0">
+                  <label for="sim_screen">Reports NUM</label>
+              </div>
+              <div class="input-field col m3">
+                  <input id="report_server" class="validate" type="number" value="0">
+                  <label for="mid_screen">Server Data Table</label>
+              </div>
+              <div class="input-field col m3">
+                  <input id="report_client" class="validate" type="number" value="0">
+                  <label for="diff_screen">Client Data Table</label>
+              </div>
+              <div class="input-field col m3">
+                <a class="waves-effect waves-light btn" onclick="return add_report()">Add Report</a>
+              </div>
+            </div>
+
+            <div class="row">
               <div class="input-field col m6">
                   <input id="reuse_components" class="validate" type="number" value="0">
                   <label for="reuse_components">Reused Components %</label>
@@ -281,10 +298,6 @@
                     <div class="input-field col m12">
                         <input id="AT1" class="validate" type="number" >
                         <label for="AT1">the percentage of code automatically generated (AT) </label>
-                    </div>
-                    <div class="input-field col m12">
-                        <input id="ATPROD1" class="validate" type="number" >
-                        <label for="ATPROD1">the productivity of engineers in integrating this code (ATPROD) </label>
                     </div>
                     <div class="input-field col m12">
                         <input id="AAM1" class="validate" type="number" >
