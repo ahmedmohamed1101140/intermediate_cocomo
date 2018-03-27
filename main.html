@@ -554,6 +554,263 @@
 
           </div>
         </li>
+
+        <li>
+          <div class="collapsible-header"><i class="material-icons">whatshot</i>Function Point</div>
+          <div class="collapsible-body">
+
+            <div class="row">
+              <div class="input-field col m9">
+                  <input id="EI" class="validate" type="number" >
+                  <label for="EI">Enternal Input (EI) </label>
+              </div>
+              <div class="input-field col m3">
+                <select id="EI_W" >
+                  <option value="3" selected="selected" >Simple</option>
+                  <option value="4"> Average </option>
+                  <option value="6"> Low </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col m9">
+                  <input id="EO" class="validate" type="number" >
+                  <label for="EO">Enternal Output (EO) </label>
+              </div>
+              <div class="input-field col m3">
+                <select id="EO_W" >
+                  <option value="4" selected="selected" >Simple</option>
+                  <option value="5"> Average </option>
+                  <option value="7"> Low </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col m9">
+                  <input id="EQ" class="validate" type="number" >
+                  <label for="EQ">Enternal Inquiry (EQ) </label>
+              </div>
+              <div class="input-field col m3">
+                <select id="EQ_W" >
+                  <option value="3" selected="selected" >Simple</option>
+                  <option value="4"> Average </option>
+                  <option value="6"> Low </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col m9">
+                  <input id="ILF" class="validate" type="number" >
+                  <label for="ILF">Internal Logical File (ILF) </label>
+              </div>
+              <div class="input-field col m3">
+                <select id="ILF_W" >
+                  <option value="7" selected="selected" >Simple</option>
+                  <option value="10"> Average </option>
+                  <option value="15"> Low </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col m9">
+                  <input id="EIF" class="validate" type="number" >
+                  <label for="EIF">Enternal Interface File (EIF) </label>
+              </div>
+              <div class="input-field col m3">
+                <select id="EIF_W" >
+                  <option value="5" selected="selected" >Simple</option>
+                  <option value="7"> Average </option>
+                  <option value="10"> Low </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col m3" style="margin-left: 30px;">
+                Data Communication
+                <select id="DC" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Didtributed Data Processing
+                <select id="DDP" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Performance Criteria
+                <select id="PC" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Heavily Utilized Hardware
+                <select id="HUH" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                High Transaction Rates
+                <select id="HTR" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Online Data Entry
+                <select id="ODE" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected" > High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Online Updating
+                <select id="OU" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                End-user Efficiency
+                <select id="EUE" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Complex Computations
+                <select id="CC" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Reusability
+                <select id="R" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Ease of Installation
+                <select id="EOI" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Ease of Operation
+                <select id="EOO" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Portability
+                <select id="P" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected"> High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+              <div class="col m3" style="margin-left: 30px;">
+                Maintainability
+                <select id="M" >
+                  <option value="0">Very Low</option>
+                  <option value="1"> Low </option>
+                  <option value="2"> Nominal </option>
+                  <option value="3" selected="selected" > High </option>
+                  <option value="4"> Very High </option>
+                  <option value="5"> Extra High </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col push-m4">
+                <a class="waves-effect waves-light btn modal-trigger left" href="#modal66" onclick="return calculate_FP()">
+                  <i class="material-icons right">add_circle</i>
+                    Calculate
+                </a>
+                <!-- Modal Structure -->
+                <div id="modal66" class="modal">
+                  <div class="modal-content">
+                    <h4>Result</h4>
+                    <div id="result_FP">
+
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </li>
+
+
     </ul>
 
   </div>

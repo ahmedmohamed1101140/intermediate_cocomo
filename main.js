@@ -405,3 +405,74 @@ function calculate_PA(){
   document.getElementById("result_PA").innerHTML = temp;
 
 }
+
+
+
+function calculate_FP(){
+    var DI = (
+              parseInt(document.getElementById("DC").value)  +
+              parseInt(document.getElementById("DDP").value) +
+              parseInt(document.getElementById("PC").value)  +
+              parseInt(document.getElementById("HUH").value) +
+              parseInt(document.getElementById("HTR").value) +
+              parseInt(document.getElementById("ODE").value) +
+              parseInt(document.getElementById("OU").value)  +
+              parseInt(document.getElementById("EUE").value) +
+              parseInt(document.getElementById("CC").value)  +
+              parseInt(document.getElementById("R").value)   +
+              parseInt(document.getElementById("EOI").value) +
+              parseInt(document.getElementById("EOO").value) +
+              parseInt(document.getElementById("P").value)   +
+              parseInt(document.getElementById("M").value)
+            );
+  console.log(DI);
+  var UFP = (
+              (parseInt(document.getElementById("EI").value) * parseInt(document.getElementById("EI_W").value)) +
+              (parseInt(document.getElementById("EO").value) * parseInt(document.getElementById("EO_W").value)) +
+              (parseInt(document.getElementById("EQ").value) * parseInt(document.getElementById("EQ_W").value)) +
+              (parseInt(document.getElementById("ILF").value) * parseInt(document.getElementById("ILF_W").value)) +
+              (parseInt(document.getElementById("EIF").value) * parseInt(document.getElementById("EIF_W").value))
+            );
+  console.log(UFP);
+  var VAF = 0.65 + (0.01*DI);
+  var FP = UFP*VAF;
+  console.log(FP);
+  console.log(VAF);
+
+  var temp = `
+  <div class="row">
+         <div class="col s12 m1"></div>
+         <div class="col s12 m10">
+                <table >
+                 <thead>
+                   <tr>
+                       <th>Name</th>
+                       <th>Value</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
+                     <td>General System Characteristic Section GSC</td>
+                     <td>`+DI+` </td>
+                   </tr>
+                   <tr>
+                     <td>unadjusted function point UFP</td>
+                     <td>`+UFP+` </td>
+                   </tr>
+                   <tr>
+                     <td>value added factor VAF</td>
+                     <td>`+VAF+` </td>
+                   </tr>
+                   <tr>
+                     <td>Function Point</td>
+                     <td>`+FP+` </td>
+                   </tr>
+                 </tbody>
+               </table>
+          </div>
+   </div>
+  `
+  document.getElementById("result_FP").innerHTML = temp;
+
+
+}
